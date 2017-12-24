@@ -8,12 +8,12 @@
 
 ## Подключение из консоли при помощи команды вида ssh internalhost
 В папке .ssh создаем файл config и в него сохроняем:
-'''
+```
 Host internalhost
 User appuser
 ProxyCommand ssh -W %h:%p appuser@35.205.217.134
 HostName 10.132.0.3
-'''
+```
 
 
 # Данные для подключения
