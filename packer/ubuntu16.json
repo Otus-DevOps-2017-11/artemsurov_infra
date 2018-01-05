@@ -13,7 +13,12 @@
     "source_image_family": "ubuntu-1604-lts",
     "zone": "europe-west1-b",
     "ssh_username": "appuser",
-    "machine_type": "{{user `machine_type`}}"
+    "machine_type": "{{user `machine_type`}}",
+    "image_description": "Image with ruby and mongodb",
+    "disk_size": 10,
+    "disk_type": "pd-standard",
+    "network": "default",
+    "tags":["puma-server"]
     }
   ],
   "provisioners": [
