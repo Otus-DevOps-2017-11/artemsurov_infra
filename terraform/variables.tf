@@ -23,3 +23,13 @@ variable zone {
   description = "Resource zone"
   default     = "europe-west1-b"
 }
+
+variable app_disk_image {
+  description = "app image with ruby"
+  default     = "reddit-base"
+}
+
+variable db_disk_image {
+  description = "Disk image for reddit db"
+  default     = "reddit-db-base"
+}
