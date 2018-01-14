@@ -39,6 +39,28 @@ gcloud compute instances create reddit-app2  --boot-disk-size=10GB \
 
 # HomeWork 08
 
-В данном домашнем задании я разабрался с тем что такое Provider и Service
+В данном домашнем задании я разабрался с тем что такое Provider и Service 
 
 # HomeWork 09
+Было изучено:
+ + импорт существующего состояния gcp в terraform state, с помощью terraform import
+ + неявные зависимости через переменные в других ресурах
+ + создание модулей и их параметризация
+
+Было сделанно:
+ + модуль vpc и проверенна параметризация ssh firewall-a
+ + разбиение проекта на stage и prod
+
+А также было выполненно первое задание со звездочкой.
+После переноса state файла в bucket gcp, выполнил одновременно apply и destroy, получил такой лок:
+Error: Error loading state: writing "gs://terraform-state-infra-189012/terraform/state/default.tflock" failed: googleapi: Error 412: Precondition Failed, conditionNot
+
+Met
+Lock Info:
+  ID:        e4ba92bc-d13d-3684-6396-237917cb6ec5
+  Path:
+  Operation: OperationTypeApply
+  Who:       artem@artem-Inspiron-13-5378
+  Version:   0.11.1
+  Created:   2018-01-14 17:50:13.420102629 +0000 UTC
+  Info:

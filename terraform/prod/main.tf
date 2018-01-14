@@ -1,4 +1,9 @@
-provider "google" {
+terraform {
+  backend "gcs" {
+    bucket  = "terraform-state-infra-189012"
+    prefix  = "terraform/state"
+  }
+}provider "google" {
   version = "1.4.0"
   project = "${var.project}"
   region  = "${var.region}"
