@@ -1,4 +1,4 @@
-2.22# artemsurov_infra
+# artemsurov_infra
 # HomeWork 05
 ## Дополнительное задание:
 ### подключение в одну строчку:
