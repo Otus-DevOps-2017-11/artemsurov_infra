@@ -61,3 +61,20 @@ gcloud compute instances create reddit-app2  --boot-disk-size=10GB \
     "tags":["puma-server"]
 }
 """
+
+#HomeWork 08 
+
+1. Была определена input переменная, в файле variables.tf, для приватного ключа - private_key 
+
+2. Определенв input переменная для задания зоны в ресурсе
+"google_compute_instance" "app":
+        """
+        variable zone {
+          description = "Resource zone"
+          default     = "europe-west1-b"
+        }
+        """
+3. Отфарматированно с помощью terraform fmt
+
+4. А также создан terraform.tfvars.example, в котором
+были указаны переменные для образца.
