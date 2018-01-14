@@ -1,5 +1,6 @@
 resource "google_compute_instance" "app" {
-  name         = "reddit-app"
+
+  name         = "${var.name_instance}-reddit-app"
   machine_type = "g1-small"
   zone         = "${var.zone}"
 
@@ -36,11 +37,11 @@ resource "google_compute_instance" "app" {
 }
 
 resource "google_compute_address" "app_ip" {
-  name = "reddit-app-ip"
+  name = "${var.name_instance}-reddit-app-ip"
 }
 
 resource "google_compute_firewall" "firewall_puma" {
-  name = "allow-puma-default"
+  name = "${var.name_instance}-allow-puma-default"
 
   network = "default"
 
