@@ -24,7 +24,6 @@ HostName 10.132.0.3
 ```
 # HomeWork 06
 
-
 Команда для создания инстанса с запуском startup-script:
 ```
 gcloud compute instances create reddit-app2  --boot-disk-size=10GB \
@@ -37,9 +36,47 @@ gcloud compute instances create reddit-app2  --boot-disk-size=10GB \
 Команда для создания правила в firewall:
 + gcloud compute firewall-rules create default-puma-server --allow=tcp:9292
 
-# HomeWork 08
+# HomeWork 07
 
-В данном домашнем задании я разабрался с тем что такое Provider и Service 
+1. Были созданы переменные:
+"""
+"variables":{
+    "project_id": null,
+    "image_f": null,
+    "machine_type": "f1-micro"
+  }
+"""
+
+А также был создан variables.json.example с примером
+заполнения
+
+2.А также были иследованы и описаны другие опции builder для GCP
+"""
+{
+    "image_description": "Image with ruby and mongodb",
+    "disk_size": 10,
+    "disk_type": "pd-standard",
+    "network": "default",
+    "tags":["puma-server"]
+}
+"""
+
+#HomeWork 08 
+
+1. Была определена input переменная, в файле variables.tf, для приватного ключа - private_key 
+
+2. Определенв input переменная для задания зоны в ресурсе
+"google_compute_instance" "app":
+        """
+        variable zone {
+          description = "Resource zone"
+          default     = "europe-west1-b"
+        }
+        """
+3. Отфарматированно с помощью terraform fmt
+
+4. А также создан terraform.tfvars.example, в котором
+были указаны переменные для образца.
 
 # HomeWork 09
 Было изучено:
@@ -53,6 +90,7 @@ gcloud compute instances create reddit-app2  --boot-disk-size=10GB \
 
 А также было выполненно первое задание со звездочкой.
 После переноса state файла в bucket gcp, выполнил одновременно apply и destroy, получил такой лок:
+"""
 Error: Error loading state: writing "gs://terraform-state-infra-189012/terraform/state/default.tflock" failed: googleapi: Error 412: Precondition Failed, conditionNot
 
 Met
@@ -64,3 +102,4 @@ Lock Info:
   Version:   0.11.1
   Created:   2018-01-14 17:50:13.420102629 +0000 UTC
   Info:
+"""
