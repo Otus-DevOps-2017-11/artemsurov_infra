@@ -36,3 +36,28 @@ gcloud compute instances create reddit-app2  --boot-disk-size=10GB \
 
 Команда для создания правила в firewall:
 + gcloud compute firewall-rules create default-puma-server --allow=tcp:9292
+
+# HomeWork 07
+
+1. Были созданы переменные:
+"""
+"variables":{
+    "project_id": null,
+    "image_f": null,
+    "machine_type": "f1-micro"
+  }
+"""
+
+А также был создан variables.json.example с примером
+заполнения
+
+2.А также были иследованы и описаны другие опции builder для GCP
+"""
+{
+    "image_description": "Image with ruby and mongodb",
+    "disk_size": 10,
+    "disk_type": "pd-standard",
+    "network": "default",
+    "tags":["puma-server"]
+}
+"""
