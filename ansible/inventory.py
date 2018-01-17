@@ -36,10 +36,10 @@ class ExampleInventory(object):
     def example_inventory(self):
         return {
   "app":{
-    "hosts": ["104.155.96.61"]
+    "hosts": ["35.205.181.81"]
 },
   "db": {
-     "hosts": ["35.195.115.171"]
+     "hosts": ["104.155.96.61"]
   }
 
         }
