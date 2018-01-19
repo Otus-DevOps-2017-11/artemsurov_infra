@@ -1,6 +1,7 @@
 ---
 - name: Install MongoDB
   hosts: all
+  become: true
   tasks:
     - name: Add an apt key by id from a keyserver
       apt_key:
