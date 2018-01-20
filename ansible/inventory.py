@@ -38,11 +38,14 @@ class ExampleInventory(object):
         compute = googleapiclient.discovery.build('compute', 'v1')
         result = compute.instances().list(project="infra-189012", zone="europe-west1-b").execute()
         items = result['items']
+        inv["app"] = {}
+        inv["app"]["vars"] = {}
         for item in items:
             if "app" in item['name']:
-                inv["app"] = [item['networkInterfaces'][0]['accessConfigs'][0]['natIP']]
+                inv["app"]["hosts"] = [item['networkInterfaces'][0]['accessConfigs'][0]['natIP']]
             elif "db" in item['name']:
                 inv["db"] = [item['networkInterfaces'][0]['accessConfigs'][0]['natIP']]
+                inv["app"]["vars"]["db_host"] = item['networkInterfaces'][0]['networkIP']
             else:
                 raise Exception("app or db instance  not found")
         return inv
