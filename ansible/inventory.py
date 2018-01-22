@@ -7,6 +7,7 @@ Example custom dynamic inventory script for Ansible, in Python.
 import os
 import sys
 import argparse
+import googleapiclient.discovery
 
 try:
     import json
@@ -21,7 +22,7 @@ class ExampleInventory(object):
 
         # Called with `--list`.
         if self.args.list:
-            self.inventory = self.example_inventory()
+            self.inventory = self.get_inventory()
         # Called with `--host [hostname]`.
         elif self.args.host:
             # Not implemented, since we return _meta info `--list`.
@@ -32,17 +33,22 @@ class ExampleInventory(object):
 
         print json.dumps(self.inventory);
 
-    # Eble_hostxample inventory for testing.
-    def example_inventory(self):
-        return {
-  "app":{
-    "hosts": ["104.155.96.61"]
-},
-  "db": {
-     "hosts": ["35.195.115.171"]
-  }
-
-        }
+    def get_inventory(self):
+        inv = {}
+        compute = googleapiclient.discovery.build('compute', 'v1')
+        result = compute.instances().list(project="infra-189012", zone="europe-west1-b").execute()
+        items = result['items']
+        inv["app"] = {}
+        inv["app"]["vars"] = {}
+        for item in items:
+            if "app" in item['name']:
+                inv["app"]["hosts"] = [item['networkInterfaces'][0]['accessConfigs'][0]['natIP']]
+            elif "db" in item['name']:
+                inv["db"] = [item['networkInterfaces'][0]['accessConfigs'][0]['natIP']]
+                inv["app"]["vars"]["db_host"] = item['networkInterfaces'][0]['networkIP']
+            else:
+                raise Exception("app or db instance  not found")
+        return inv
 
     # Empty inventory for testing.
     def empty_inventory(self):
