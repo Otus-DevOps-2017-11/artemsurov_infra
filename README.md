@@ -103,3 +103,5 @@ Lock Info:
   Created:   2018-01-14 17:50:13.420102629 +0000 UTC
   Info:
 """
+# HomeWork 10
+Был настроен Ansible и созданы config файлы, а также три inventory файла в py, yml и ini формате.
