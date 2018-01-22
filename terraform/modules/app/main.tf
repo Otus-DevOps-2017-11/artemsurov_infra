@@ -28,12 +28,6 @@ resource "google_compute_instance" "app" {
 
   tags = ["reddit-app"]
 
-  connection {
-    type        = "ssh"
-    user        = "appuser"
-    agent       = false
-    private_key = "${file(var.private_key)}"
-  }
 }
 
 resource "google_compute_address" "app_ip" {
