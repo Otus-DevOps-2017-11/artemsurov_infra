@@ -22,7 +22,6 @@
     }
   ],
   "provisioners": [
-    
     {
       "type": "shell",
       "script": "scripts/install_ruby.sh",
