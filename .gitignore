@@ -8,3 +8,9 @@ packer/variables.json
 *.retry
 variables.json
 jdauphant.nginx
+# Vagrant & molecule
+.vagrant/
+*.log
+*.pyc
+.molecule
+.cache
